@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoolMo's Public Place</title>
+
+  <!-- Google Fonts: Playfair Display (headings) + Montserrat (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ─── Reset & base ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:       #111111;
+      --color-surface:  #1a1a1a;
+      --color-text:     #e8e0d4;
+      --color-muted:    #9a9080;
+      --color-accent:   #c9a85c;   /* warm gold */
+      --color-border:   #2e2b26;
+      --font-heading:   'Playfair Display', Georgia, serif;
+      --font-body:      'Montserrat', Helvetica, sans-serif;
+      --max-width:      860px;
+      --font-size-xs:   0.7rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── Navigation ─────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--color-accent); }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-eyebrow {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-divider {
+      width: 56px;
+      height: 2px;
+      background-color: var(--color-accent);
+      margin: 1.75rem auto;
+      border: none;
+    }
+
+    .hero-sub {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--color-muted);
+      max-width: 480px;
+      margin-bottom: 2.75rem;
+    }
+
+    .hero-body {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      max-width: 520px;
+      line-height: 1.9;
+    }
+
+    /* ─── CTA button ─────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.75rem 2rem;
+      background: transparent;
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    /* ─── Section ────────────────────────────────────────── */
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--color-border);
+      width: 100%;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: 1.65rem;
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .section-text {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      max-width: 620px;
+      line-height: 1.9;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--color-border);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.08em;
+      color: var(--color-border);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#">CoolMo</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero / Welcome -->
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero-eyebrow">Welcome</p>
+      <h1 class="hero-title" id="hero-title">CoolMo's <em>Public&nbsp;Place</em></h1>
+      <hr class="hero-divider" />
+      <p class="hero-sub">A personal corner of the internet.</p>
+      <p class="hero-body">
+        This site is under construction. Stop by again soon &mdash; there is
+        plenty more to come. In the meantime, feel free to reach out.
+      </p>
+      <a class="btn" href="#contact">Get in touch</a>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <p class="section-label">About</p>
+      <h2 class="section-heading">A little about me</h2>
+      <p class="section-text">
+        Placeholder text for a short personal bio. This section will be updated
+        with real content soon.
+      </p>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="section">
+      <p class="section-label">Work</p>
+      <h2 class="section-heading">Projects &amp; interests</h2>
+      <p class="section-text">
+        Placeholder text for projects, links, and areas of interest. Check back
+        for updates.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <p class="section-label">Contact</p>
+      <h2 class="section-heading">Say hello</h2>
+      <p class="section-text">
+        Reach out via GitHub or email. Details coming soon.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="yr"></span> CoolMo &mdash; All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
